@@ -1,2 +1,38 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<%= link_to("Back to Categories", categories_path, class: 'back-link') %>
+
+<div class="categories show">
+  <h2>Show Category</h2>
+
+  <div class="actions">
+    <%= link_to('Edit', edit_category_path(@category)) %>
+    <%= link_to('Delete', delete_category_path(@category)) %>
+  </div>
+
+  <table summary="Category detail view">
+    <tr>
+      <th>Name</th>
+      <td><%= @category.name %></td>
+    </tr>
+    <tr>
+      <th>Categories</th>
+      <td>
+        <ul>
+        <% @category.tasks.each do |task| %>
+          <% if task.name %>
+            <li><%= link_to(task.name, task_path(task), class: 'action show') %></li>
+          <% end %>
+        <% end %>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @category.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @category.updated_at %></td>
+    </tr>
+  </table>
+
+</div>
