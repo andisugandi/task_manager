@@ -29,7 +29,7 @@
       <th>Category</th>
       <td>
         <% if @task.category %>
-          <%= @task.category.name %>
+          <%= link_to(@task.category.name, category_path(@task.category), class: 'action show') %>
         <% end %>
       </td>
     </tr>
